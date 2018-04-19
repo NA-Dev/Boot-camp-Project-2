@@ -104,14 +104,14 @@ function getLocationData(address, lat, lng, timezone) {
         userLocation = data.userLocation;
         goodTimes = data.goodTimes;
         RSSEvents = data.RSSEvents;
-        riseSetTimes = data.riseSetTimes;
+        // riseSetTimes = data.riseSetTimes;
         APIEvents = data.APIEvents;
         APILocations = data.APILocations;
         getViewingConditions(goodTimes);
         viewRSS(RSSEvents);
         viewAPIEvents(APIEvents);
         viewAPILocations(APILocations);
-        viewRiseSetTimes(riseSetTimes);
+        // viewRiseSetTimes(riseSetTimes);
     });
 }
 

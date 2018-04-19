@@ -75,6 +75,7 @@ function geocode(address) {
         var queryURL = 'https://maps.googleapis.com/maps/api/geocode/json?key=';
         queryURL += keyMaps + '&address=' + address;
         queryURL = encodeURI(queryURL);
+        console.log(queryURL);
 
         request(queryURL, function(error, response, body) {
             body = JSON.parse(body);
@@ -201,21 +202,22 @@ function getRSSEvents(userLocation) {
 
 function getRiseSetTimesByWeek(userLocation) {
     return new Promise(function(resolve, reject) {
-        var date = new Date();
-        var promises = [];
-        i=0
-        while(i < 5) {
-            date.setDate(date.getDate());
-            promises.push(getRiseSetTimesByDay(userLocation, date));
-            i++;
-        }
-        Promise.all(promises)
-        .then(function(results) {
-            resolve(results);
-        })
-        .catch(function(error) {
-            reject(error);
-        });
+        resolve([]);
+    //     var date = new Date();
+    //     var promises = [];
+    //     i=0
+    //     while(i < 5) {
+    //         date.setDate(date.getDate());
+    //         promises.push(getRiseSetTimesByDay(userLocation, date));
+    //         i++;
+    //     }
+    //     Promise.all(promises)
+    //     .then(function(results) {
+    //         resolve(results);
+    //     })
+    //     .catch(function(error) {
+    //         reject(error);
+    //     });
     });
 }
 
@@ -228,9 +230,8 @@ function getRiseSetTimesByDay(userLocation, date) {
         var day =  date.getDate();
         var year = date.getFullYear();
         var dateFormatted = (month+1) + '/' + day + '/' + year;
-        var queryURL = 'http://api.usno.navy.mil/rstt/oneday?date=';
+        var queryURL = 'http://aa.usno.navy.mil/rstt/oneday?date=';
         queryURL += dateFormatted + '&coords=' + coords + '&tz=' + timezone;
-        console.log(queryURL, "line 233");
 
         request(queryURL, function(error, response, body) {
             if (error) {

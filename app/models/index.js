@@ -13,14 +13,7 @@ if (process.env.JAWSDB_URL) {
 
 } else {
   var sequelize = new Sequelize(
-    "stargazer",
-    process.env.MYSQL_USER,
-    process.env.MYSQL_PASSWORD,
-    {
-      host: process.env.MYSQL_HOST,
-      port: process.env.MYSQL_PORT,
-      dialect: "mysql"
-    }
+    process.env.DATABASE_URL
   );
 }
 
